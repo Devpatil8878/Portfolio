@@ -2,112 +2,160 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <main className="w-screen h-screen pt-3 bg-black mybg bg-cover relative">
+        {/* <img src="/right color bg.png" alt="" className="absolute right-0 top-0 h-[100vh] w-[40%] rotate-180 transform -scale-y-100" /> */}
+        <nav className="rounded-[2.5rem] flex items-center border-b border-purple-900 bg-zinc-950 w-[80%] h-[8%] m-auto">
+          <h1 className="text-[1.5rem] text-white pl-[3rem]  ">Deva</h1>
+
+          <div className="flex text-white gap-10 ml-[8rem]">
+            <h2>Home</h2>
+            <h2>Projects</h2>
+            <h2>About</h2>
+            <h2>Contact</h2>
+          </div>
+
+          <div className=" ml-[26rem] text-white">switch</div>
+
+          <button className="ml-[2.1rem] text-white bg-purple-900 rounded-[3rem] py-[.7rem] px-[1.5rem]">
+            Contact Me
+          </button>
+        </nav>
+
+        <div className="flex">
+          <div className="left w-[40%] h-[90vh] pl-[12rem] pt-[10rem] ">
+            <div className="suptext text-zinc-400 text-3xl">It's me guys</div>
+
+            <div className="title mt-2 text-white text-[5rem] leading-[6rem]">
+              Full Stack Developer
+            </div>
+
+            <div className="subtext flex mt-2 ml-2 text-zinc-400">
+              <div className="bg-zinc-400 w-0.5 h-[5.7rem] mt-"></div>
+              <div className="ml-5 w-[7rem] text-[0.9rem]">
+                I'm a Full stack Developer, and I work with Next.js.
+              </div>
+            </div>
+          </div>
+
+          <div className="right w-[60%] relative h-[90vh] ">
+            <div className="absolute bottom-0 right-[12rem]">
+              <img src="/bg_bubble.png" alt="" className="w-[40rem]" />
+              <img
+                src="/bubble.png"
+                alt=""
+                className="w-[5rem] absolute top-5 right-[5rem] z-10"
+              />
+              <img
+                src="/right line.png"
+                alt=""
+                className="w-[12.5rem] absolute top-5 right-[-2.5rem] rotate-[2deg] z-[1]"
+              />
+              <img
+                src="/left line.png"
+                alt=""
+                className="w-[11rem] absolute top-[6.4rem] left-[-4.5rem] rotate-[-16deg] z-[0]"
+              />
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <div className="bg-black w-screen flex h-screen pl-[6rem]">
+          <div className="left w-[50vw] relative h-screen flex">
+            <img src="/purple_back.png" className="w-[50rem] h-[50rem] absolute left-[-23rem] bottom-[-15rem] z-[0]" />
+            <div className="pic w-[35rem] relative h-[35rem] rounded-full z-[2] bg-[url('/about_me_pic.png')] bg-cover m-auto">
+              <img src="/bigger_ball.png" className="w-[8rem] h-[8rem] absolute left-[-1rem] z-[1] bottom-[1.5rem]" />
+            </div>
+          </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <div className="right w-[50vw] relative h-full pt-[5rem]">
+            <div className="w-[80rem] bg-[url('/pink_back.png')] h-[60rem] absolute right-[-25rem] bottom-[-20rem]">
+            </div>
+            <div className="w-[80rem] bg-[url('/purple_back.png')] h-[60rem] absolute right-[-20rem] bottom-[0rem]">
+            </div>
+            <div className="w-[20rem] h-[4.8rem] bg-[url('/dots_back.png')]  absolute right-[0rem] bottom-[5rem]">
+            </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+            <h1 className="text-[9rem] w-[9rem] leading-[8.5rem] text-white ml-[-10rem] absolute z-10">About Me</h1>
+            <h3 className="text-zinc-400 absolute text-[1rem] w-[27rem] mt-[20rem]">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. At quia fugiat sunt nesciunt! Numquam pariatur consequuntur corrupti, ipsam eaque dolorum veniam aspernatur quia nemo ex, quae enim deleniti sint? Consequatur, illo maiores magnam dolor iure ea? Nemo voluptatum quam modi vero tempore deleniti architecto voluptas.
+            </h3>
+            <button className="w-[10rem] h-[3rem] bg-[#D018B8] mt-[32rem] rounded-full text-white font-semibold">
+              Contact Me
+            </button>
+            
+          </div>
+        </div>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        <div className="w-screen h-screen pl-[10rem] pt-[4rem] bg-black">
+          <h1 className="text-[5rem] mb-10 text-zinc-300">Tech stack </h1>
+
+          <div className="card-container flex gap-8 text-white lg:pl-[1rem] mr-[10vw] m-auto">
+
+            <div className="flex flex-col items-end pt-[4rem]">
+              <div className="flex">
+                <div className="card-bg min-w-[10rem] m-5 mt-[-2rem] h-[10rem] rounded-3xl flex pt-[.5rem] border-zinc-600 border-l-2 border-t-2">
+                  <img src="/docker.png" className="fill-white m-auto scale-105" alt="" />
+                </div>
+                <div className="card-bg min-w-[7em] mb-5 h-[7rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2">
+                  <img src="/mongodb.png" className="fill-white m-auto scale-100" alt="" />
+                </div> 
+              </div>
+
+              <div className="flex">
+                <div className="card-bg min-w-[8rem] m-1 mr-[2rem] h-[8rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 ">
+                  <img src="/figma.png" className="fill-white m-auto scale-50" alt="" />
+                </div>
+                <div className="card-bg w-[10rem] h-[5rem] rounded-3xl flex pt-[.5rem] border-zinc-600 border-l-2 border-t-2">
+                  <img src="/express.png" className="fill-white m-auto scale-75" alt="" />
+                </div>
+              </div>
+              
+            </div>
+
+
+            <div className="card-bg min-w-[15rem] row-span-4 mt-[5rem] border-zinc-600 border-l-2 border-t-2 h-[10rem] rounded-3xl flex">
+              <img src="/nextjs.png" className="fill-white m-auto scale-125" alt="" />
+            </div>
+
+            <div className="flex-col flex-wrap">
+              <div className="card-bg mb-5 min-w-[10rem] h-[10rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 ">
+                <img src="/react.gif" className="fill-white m-auto scale-50" alt="" />
+              </div>
+              <div className="card-bg min-w-[7rem] h-[7rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 ">
+                <img src="/github.png" className="fill-white m-auto scale-50" alt="" />
+              </div>
+              
+            </div>
+
+            <div className="flex flex-col mt-[-5rem]">
+              <div className="card-bg min-w-[7rem] h-[7rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 self-end">
+                <img src="/threejs.png" className="fill-white m-auto scale-75" alt="" />
+              </div>
+              <div className="card-bg min-w-[15rem] mb-5 mt-5 h-[5rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2">
+                <img src="/tailwind.png" className="fill-white m-auto scale-75" alt="" />
+              </div>
+              <div className="card-bg w-[10rem] min-w-[10rem] h-[10rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2">
+                <img src="/nodejs.png" className="fill-white m-auto scale-50" alt="" />
+              </div>
+            </div>
+
+
+            <div className="card-bg min-w-[7rem] h-[7rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 ">
+              <img src="/mysql.png" className="fill-white m-auto scale-50" alt="" />
+            </div>
+            
+            
+            
+
+            
+
+          </div>
+
+            
+        </div>
+      </main>
+    </>
   );
 }
