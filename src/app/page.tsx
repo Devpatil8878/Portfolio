@@ -1,10 +1,11 @@
 "use client"
 
-// import Image from "next/image";
-// import { useGSAP } from "@gsap/react";
-// import gsap from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
+
 
 
 export default function Home() {
@@ -13,10 +14,9 @@ export default function Home() {
     (
       async () => {
         const LocomotiveScroll = (await import('locomotive-scroll' as any)).default;
-        const locomotiveScroll = new LocomotiveScroll()
+        const locomotiveScroll = new LocomotiveScroll();
       }
     )()
-    
   }, [])
 
 
@@ -26,7 +26,7 @@ export default function Home() {
 
   return (
     <>
-      <main className=" w-screen con h-screen pt-3 bg-black mybg bg-cover relative">
+      <main className="  w-screen con h-screen pt-3 bg-black mybg bg-cover relative">
         {/* <img src="/right color bg.png" alt="" className="absolute right-0 top-0 h-[100vh] w-[40%] rotate-180 transform -scale-y-100" /> */}
         <nav className="rounded-[2.5rem] flex items-center border-b border-purple-900 bg-zinc-950 w-[80%] h-[8%] m-auto">
           <h1 className="text-[1.5rem] text-white pl-[3rem]  ">Deva</h1>
@@ -47,7 +47,7 @@ export default function Home() {
 
         <div className="flex">
           <div className="left w-[40%] h-[90vh] pl-[12rem] pt-[10rem] ">
-            <div className="suptext text-zinc-400 text-3xl">Its me guys</div>
+            <div className="suptext text-zinc-400 text-3xl">It's me guys</div>
 
             <div className="title mt-2 text-white text-[5rem] leading-[6rem]">
               Full Stack Developer
@@ -56,7 +56,7 @@ export default function Home() {
             <div className="subtext flex mt-2 ml-2 text-zinc-400">
               <div className="bg-zinc-400 w-0.5 h-[5.7rem] mt-"></div>
               <div className="ml-5 w-[7rem] text-[0.9rem]">
-                I am a Full stack Developer, and I work with Next.js.
+                I'm a Full stack Developer, and I work with Next.js.
               </div>
             </div>
           </div>
