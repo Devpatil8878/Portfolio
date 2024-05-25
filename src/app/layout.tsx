@@ -25,10 +25,8 @@ export default function RootLayout({
 
 
   return (
-    <ReactLenis root>
       <html lang="en">
         <body className={inter.className}>{children}</body>
       </html>
-    </ReactLenis>
   );
 }
