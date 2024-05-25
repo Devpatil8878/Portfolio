@@ -1,9 +1,32 @@
-import Image from "next/image";
+"use client"
+
+// import Image from "next/image";
+// import { useGSAP } from "@gsap/react";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
+
 
 export default function Home() {
+
+  useEffect( () => {
+    (
+      async () => {
+        const LocomotiveScroll = (await import('locomotive-scroll' as any)).default;
+        const locomotiveScroll = new LocomotiveScroll()
+      }
+    )()
+    
+  }, [])
+
+
+
+
+
+
   return (
     <>
-      <main className="w-screen h-screen pt-3 bg-black mybg bg-cover relative">
+      <main className=" w-screen con h-screen pt-3 bg-black mybg bg-cover relative">
         {/* <img src="/right color bg.png" alt="" className="absolute right-0 top-0 h-[100vh] w-[40%] rotate-180 transform -scale-y-100" /> */}
         <nav className="rounded-[2.5rem] flex items-center border-b border-purple-900 bg-zinc-950 w-[80%] h-[8%] m-auto">
           <h1 className="text-[1.5rem] text-white pl-[3rem]  ">Deva</h1>
@@ -88,6 +111,7 @@ export default function Home() {
           </div>
         </div>
 
+
         <div className="w-screen h-screen pl-[10rem] pt-[4rem] bg-black">
           <h1 className="text-[5rem] mb-10 text-zinc-300">Tech stack </h1>
 
@@ -154,6 +178,15 @@ export default function Home() {
           </div>
 
             
+        </div>
+
+
+        <div className="w-screen min-h-screen bg-black text-white">
+          <h1 className="text-9xl text-end mr-[15rem] pt-10">Projects</h1>
+
+          <div className="flex w-screen">
+            
+          </div>
         </div>
       </main>
     </>
