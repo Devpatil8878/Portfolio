@@ -5,6 +5,17 @@ import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import localfont from "next/font/local";
+
+const gilroy = localfont({
+  src: [
+    {
+      path: '../../public/fonts/Gilroy-SemiBold.ttf',
+      weight: '700'
+    }
+  ],
+  variable: '--font-gilroy'
+})
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -155,10 +166,6 @@ export default function Home() {
     gsap.to(".next", {
       x: 0,
       y: -8,
-      scrollTrigger: {
-        trigger: `.tech-stack`,
-        start: "top 30%",
-      },
       duration:1,
       delay: 0.5,
       yoyo: true,
@@ -172,10 +179,10 @@ export default function Home() {
 
   return (
     <>
-      <main className=" w-screen h-screen pt-3 bg-black mybg bg-cover relative">
+      <main className={` ${gilroy.className} w-screen h-screen pt-3 bg-black mybg bg-cover relative`}>
         {/* <img src="/right color bg.png" alt="" className="absolute right-0 top-0 h-[100vh] w-[40%] rotate-180 transform -scale-y-100" /> */}
-        <nav className="rounded-[2.5rem] flex items-center border-b border-purple-900 bg-zinc-950 w-[80%] h-[8%] m-auto">
-          <h1 className="text-[1.5rem] text-white pl-[3rem]">Deva</h1>
+        <nav className="rounded-[2.5rem] flex items-center  border-b-2 border-r-[2px] border-b-purple-900 border-r-blue-800 bg-zinc-950 w-[80%] h-[8%] m-auto">
+          <h1 className="text-[1.5rem] text-white pl-[3rem]">Dev</h1>
 
           <div className="flex text-white gap-10 ml-[8rem]">
             <h2>Home</h2>
@@ -213,7 +220,7 @@ export default function Home() {
               <img
                 src="/bubble.png"
                 alt=""
-                className="w-[5rem] absolute top-5 right-[5rem] z-10"
+                className="w-[5rem] next absolute top-5 right-[5rem] z-10"
               />
               <img
                 src="/right line.png"
