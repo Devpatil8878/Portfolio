@@ -255,7 +255,7 @@ export default function Home() {
 
         <div className="flex">
           <div className="left w-[40%] h-[90vh] pl-[12rem] pt-[10rem] ">
-            <div className="suptext text-zinc-400 text-3xl info">It's me guys</div>
+            <div className="suptext text-zinc-400 text-3xl info">It is me guys</div>
 
             <div className="title mt-2 text-white text-[5rem] leading-[6rem] font-medium info">
               Full Stack Developer
@@ -264,7 +264,7 @@ export default function Home() {
             <div className="subtext flex mt-2 ml-2 text-zinc-400">
               <div className="bg-zinc-400 w-0.5 h-[5.7rem] info"></div>
               <div className="ml-5 w-[7rem] text-[0.9rem] info">
-                I'm a Full stack Developer, and I work with Next.js.
+                I am a Full stack Developer, and I work with Next.js.
               </div>
             </div>
           </div>
