@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'grotesk';
+  src: url('/public/HankenGrotesk-Italic-VariableFont_wght.ttf') format('truetype'),
+       url('/public/HankenGrotesk-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -16,10 +24,10 @@
   }
 }
 body, html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   height: 100%;
   width: 100%;
   margin: 0;
-  overflow-y: auto;
   overflow-x: hidden;
 }
 

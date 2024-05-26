@@ -1,12 +1,12 @@
 "use client"
 
-import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
 
@@ -18,7 +18,153 @@ export default function Home() {
       }
     )()
   }, [])
+  
 
+  useGSAP(()=>{
+  
+    gsap.from(".express", {
+      x: 200,
+      y: -60,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: `.tech-stack`,
+        start: "top 30%",
+      },
+      opacity: 0,
+      duration:1.2,
+      delay: 0.5,
+      z: 10,
+    })
+    gsap.from(".mongodb", {
+      x: 200,
+      y: 30,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: `.tech-stack`,
+        start: "top 30%",
+      },
+      opacity: 0,
+      duration:1.2,
+      delay: 0.5,
+      z: 10,
+    })
+    gsap.from(".figma", {
+      x: 400,
+      y: -110,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: `.tech-stack`,
+        start: "top 30%",
+      },
+      opacity: 0,
+      duration:1.3,
+      delay: 0.5,
+      z: 10,
+    })
+    gsap.from(".docker", {
+      x: 400,
+      y: 110,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: `.tech-stack`,
+        start: "top 30%",
+      },
+      opacity: 0,
+      duration:1.3,
+      delay: 0.5,
+      z: 10,
+    })
+    gsap.from(".react", {
+      x: -400,
+      y: 110,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: `.tech-stack`,
+        start: "top 30%",
+      },
+      opacity: 0,
+      duration:1.2,
+      delay: 0.5,
+      z: 10,
+    })
+    gsap.from(".github", {
+      x: -400,
+      y: -110,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: `.tech-stack`,
+        start: "top 30%",
+      },
+      opacity: 0,
+      duration:1.3,
+      delay: 0.5,
+      z: 10,
+    })
+    gsap.from(".nodejs", {
+      x: -700,
+      y: -110,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: `.tech-stack`,
+        start: "top 30%",
+      },
+      opacity: 0,
+      duration:1.4,
+      delay: 0.5,
+      z: 10,
+    })
+    gsap.from(".tailwind", {
+      x: -700,
+      y: 60,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: `.tech-stack`,
+        start: "top 30%",
+      },
+      opacity: 0,
+      duration:1.4,
+      delay: 0.5,
+      z: 10,
+    })
+    gsap.from(".threejs", {
+      x: -1000,
+      y: 250,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: `.tech-stack`,
+        start: "top 30%",
+      },
+      opacity: 0,
+      duration:1.4,
+      delay: 0.5,
+      z: 10,
+    })
+    gsap.from(".mysql", {
+      x: -1200,
+      y: 250,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: `.tech-stack`,
+        start: "top 30%",
+      },
+      opacity: 0,
+      duration:1.4,
+      delay: 0.5,
+      z: 10,
+    })
+    gsap.to(".next", {
+      x: 0,
+      y: -8,
+      scrollTrigger: {
+        trigger: `.tech-stack`,
+        start: "top 30%",
+      },
+      duration:1,
+      delay: 0.5,
+      yoyo: true,
+      repeat: 100
+    })
+  })
 
 
 
@@ -26,10 +172,10 @@ export default function Home() {
 
   return (
     <>
-      <main className="  w-screen con h-screen pt-3 bg-black mybg bg-cover relative">
+      <main className=" w-screen h-screen pt-3 bg-black mybg bg-cover relative">
         {/* <img src="/right color bg.png" alt="" className="absolute right-0 top-0 h-[100vh] w-[40%] rotate-180 transform -scale-y-100" /> */}
         <nav className="rounded-[2.5rem] flex items-center border-b border-purple-900 bg-zinc-950 w-[80%] h-[8%] m-auto">
-          <h1 className="text-[1.5rem] text-white pl-[3rem]  ">Deva</h1>
+          <h1 className="text-[1.5rem] text-white pl-[3rem]">Deva</h1>
 
           <div className="flex text-white gap-10 ml-[8rem]">
             <h2>Home</h2>
@@ -49,7 +195,7 @@ export default function Home() {
           <div className="left w-[40%] h-[90vh] pl-[12rem] pt-[10rem] ">
             <div className="suptext text-zinc-400 text-3xl">It's me guys</div>
 
-            <div className="title mt-2 text-white text-[5rem] leading-[6rem]">
+            <div className="title mt-2 text-white text-[5rem] leading-[6rem] font-medium">
               Full Stack Developer
             </div>
 
@@ -83,7 +229,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="bg-black w-screen flex h-screen pl-[6rem]">
+        <div className=" bg-black w-screen flex h-screen pl-[6rem]">
           <div className="left w-[50vw] relative h-screen flex">
             <img src="/purple_back.png" className="w-[50rem] h-[50rem] absolute left-[-23rem] bottom-[-15rem] z-[0]" />
             <div className="pic w-[35rem] relative h-[35rem] rounded-full z-[2] bg-[url('/about_me_pic.png')] bg-cover m-auto">
@@ -112,26 +258,26 @@ export default function Home() {
         </div>
 
 
-        <div className="w-screen h-screen pl-[10rem] pt-[4rem] bg-black">
+        <div className="tech-stack w-screen h-screen pl-[10rem] pt-[4rem] bg-black">
           <h1 className="text-[5rem] mb-10 text-zinc-300">Tech stack </h1>
 
           <div className="card-container flex gap-8 text-white lg:pl-[1rem] mr-[10vw] m-auto">
 
             <div className="flex flex-col items-end pt-[4rem]">
               <div className="flex">
-                <div className="card-bg min-w-[10rem] m-5 mt-[-2rem] h-[10rem] rounded-3xl flex pt-[.5rem] border-zinc-600 border-l-2 border-t-2">
+                <div className="docker card-bg min-w-[10rem] m-5 mt-[-2rem] h-[10rem] rounded-3xl flex pt-[.5rem] border-zinc-600 border-l-2 border-t-2">
                   <img src="/docker.png" className="fill-white m-auto scale-105" alt="" />
                 </div>
-                <div className="card-bg min-w-[7em] mb-5 h-[7rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2">
+                <div className="mongodb card-bg min-w-[7em] mb-5 h-[7rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2">
                   <img src="/mongodb.png" className="fill-white m-auto scale-100" alt="" />
                 </div> 
               </div>
 
               <div className="flex">
-                <div className="card-bg min-w-[8rem] m-1 mr-[2rem] h-[8rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 ">
+                <div className="figma card-bg min-w-[8rem] m-1 mr-[2rem] h-[8rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 ">
                   <img src="/figma.png" className="fill-white m-auto scale-50" alt="" />
                 </div>
-                <div className="card-bg w-[10rem] h-[5rem] rounded-3xl flex pt-[.5rem] border-zinc-600 border-l-2 border-t-2">
+                <div className="express card-bg w-[10rem] h-[5rem] rounded-3xl flex pt-[.5rem] border-zinc-600 border-l-2 border-t-2">
                   <img src="/express.png" className="fill-white m-auto scale-75" alt="" />
                 </div>
               </div>
@@ -139,34 +285,34 @@ export default function Home() {
             </div>
 
 
-            <div className="card-bg min-w-[15rem] row-span-4 mt-[5rem] border-zinc-600 border-l-2 border-t-2 h-[10rem] rounded-3xl flex">
+            <div className="next card-bg min-w-[15rem] row-span-4 mt-[5rem] border-zinc-600 border-l-2 z-20 border-t-2 h-[10rem] rounded-3xl flex">
               <img src="/nextjs.png" className="fill-white m-auto scale-125" alt="" />
             </div>
 
             <div className="flex-col flex-wrap">
-              <div className="card-bg mb-5 min-w-[10rem] h-[10rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 ">
+              <div className="react card-bg mb-5 min-w-[10rem] h-[10rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 ">
                 <img src="/react.gif" className="fill-white m-auto scale-50" alt="" />
               </div>
-              <div className="card-bg min-w-[7rem] h-[7rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 ">
+              <div className="github card-bg min-w-[7rem] h-[7rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 ">
                 <img src="/github.png" className="fill-white m-auto scale-50" alt="" />
               </div>
               
             </div>
 
             <div className="flex flex-col mt-[-5rem]">
-              <div className="card-bg min-w-[7rem] h-[7rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 self-end">
+              <div className="threejs card-bg min-w-[7rem] h-[7rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 self-end">
                 <img src="/threejs.png" className="fill-white m-auto scale-75" alt="" />
               </div>
-              <div className="card-bg min-w-[15rem] mb-5 mt-5 h-[5rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2">
+              <div className="tailwind card-bg min-w-[15rem] mb-5 mt-5 h-[5rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2">
                 <img src="/tailwind.png" className="fill-white m-auto scale-75" alt="" />
               </div>
-              <div className="card-bg w-[10rem] min-w-[10rem] h-[10rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2">
+              <div className="nodejs card-bg w-[10rem] min-w-[10rem] h-[10rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2">
                 <img src="/nodejs.png" className="fill-white m-auto scale-50" alt="" />
               </div>
             </div>
 
 
-            <div className="card-bg min-w-[7rem] h-[7rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 ">
+            <div className="mysql card-bg min-w-[7rem] h-[7rem] rounded-3xl flex border-zinc-600 border-l-2 border-t-2 ">
               <img src="/mysql.png" className="fill-white m-auto scale-50" alt="" />
             </div>
             
