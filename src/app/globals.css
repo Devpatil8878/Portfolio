@@ -40,3 +40,25 @@ body, html {
   background: rgb(26,26,26);
   background: linear-gradient(159deg, rgba(26,26,26,1) 0%, rgba(20,20,20,1) 58%, rgba(16,16,16,1) 100%);
 }
+
+
+
+.shining-border-element::before {
+  content: '';
+  position: absolute;
+  background: linear-gradient(90deg, transparent, white, transparent);
+  width: 10%; 
+  height: 1px; 
+  bottom: 0;
+  left: 0;
+  animation: shineBottom 15s infinite ease-in-out;
+}
+
+@keyframes shineBottom {
+  0%, 100% {
+    left: 90%;
+  }
+  50% {
+    left: 0%;
+  }
+}

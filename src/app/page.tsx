@@ -21,14 +21,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
 
-  useEffect( () => {
-    (
-      async () => {
-        const LocomotiveScroll = (await import('locomotive-scroll' as any)).default;
-        const locomotiveScroll = new LocomotiveScroll();
-      }
-    )()
-  }, [])
+  // useEffect( () => {
+  //   (
+  //     async () => {
+  //       const LocomotiveScroll = (await import('locomotive-scroll' as any)).default;
+  //       const locomotiveScroll = new LocomotiveScroll();
+  //     }
+  //   )()
+  // }, [])
+
+  useGSAP(() => {
+  let cursor = document.addEventListener("mousemove", (dets) => {
+      gsap.to(".cursor-follower", {
+        x: dets.x - 15,
+        y: dets.y - 30,
+        ease: "back.out(2)",
+      })
+    })
+  })
   
 
   useGSAP(()=>{
@@ -171,7 +181,51 @@ export default function Home() {
       yoyo: true,
       repeat: 100
     })
+
+
+    gsap.from(".nav", {
+      ease: "back.out(1.7)",
+      stagger: 0.1,
+      opacity: 0,
+      duration:0.8,
+    })
+    gsap.from(".dev", {
+      scale: 0,
+      ease: "back.out(1.7)",
+      stagger: 0.1,
+      opacity: 0,
+      duration:0.8,
+    })  
+    gsap.from(".top-to-down-anim", {
+      y: -50,
+      ease: "back.out(1.7)",
+      stagger: 0.1,
+      opacity: 0,
+      duration:1,
+    })
+    gsap.from(".info", {
+      y: 300,
+      scale: 0.5,
+      stagger: 0.2,
+      opacity: 0,
+      duration:1,
+    })
+    gsap.from(".about", {
+      y: 300,
+      scale: 0.5,
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: ".about-main",
+        start: "top 30%"
+      },
+      opacity: 0,
+      duration:1,
+    })
+    
   })
+
+
+
 
 
 
@@ -180,35 +234,36 @@ export default function Home() {
   return (
     <>
       <main className={` ${gilroy.className} w-screen h-screen pt-3 bg-black mybg bg-cover relative`}>
+      <div className="cursor-follower w-[1.5rem] h-[1.5rem] rounded-full bg-white fixed z-[100]"></div>
         {/* <img src="/right color bg.png" alt="" className="absolute right-0 top-0 h-[100vh] w-[40%] rotate-180 transform -scale-y-100" /> */}
-        <nav className="rounded-[2.5rem] flex items-center  border-b-2 border-r-[2px] border-b-purple-900 border-r-blue-800 bg-zinc-950 w-[80%] h-[8%] m-auto">
-          <h1 className="text-[1.5rem] text-white pl-[3rem]">Dev</h1>
+        <nav className="rounded-[2.5rem] nav shining-border-element relative flex items-center  border-b-2 border-r-[2px] border-b-purple-900 border-r-blue-800 bg-zinc-950 w-[80%] h-[8%] m-auto">
+          <h1 className="text-[1.5rem] dev text-white pl-[3rem]">Dev</h1>
 
           <div className="flex text-white gap-10 ml-[8rem]">
-            <h2>Home</h2>
-            <h2>Projects</h2>
-            <h2>About</h2>
-            <h2>Contact</h2>
+            <h2 className="cursor-pointer top-to-down-anim">Home</h2>
+            <h2 className="cursor-pointer top-to-down-anim">Projects</h2>
+            <h2 className="cursor-pointer top-to-down-anim">About</h2>
+            <h2 className="cursor-pointer top-to-down-anim">Contact</h2>
           </div>
 
-          <div className=" ml-[26rem] text-white">switch</div>
+          <div className=" ml-[26rem] top-to-down-anim switch text-white">switch</div>
 
-          <button className="ml-[2.1rem] text-white bg-purple-900 rounded-[3rem] py-[.7rem] px-[1.5rem]">
+          <button className="contact-me ml-[2.1rem] top-to-down-anim text-white bg-purple-900 rounded-[3rem] py-[.7rem] px-[1.5rem]">
             Contact Me
           </button>
         </nav>
 
         <div className="flex">
           <div className="left w-[40%] h-[90vh] pl-[12rem] pt-[10rem] ">
-            <div className="suptext text-zinc-400 text-3xl">It's me guys</div>
+            <div className="suptext text-zinc-400 text-3xl info">It's me guys</div>
 
-            <div className="title mt-2 text-white text-[5rem] leading-[6rem] font-medium">
+            <div className="title mt-2 text-white text-[5rem] leading-[6rem] font-medium info">
               Full Stack Developer
             </div>
 
             <div className="subtext flex mt-2 ml-2 text-zinc-400">
-              <div className="bg-zinc-400 w-0.5 h-[5.7rem] mt-"></div>
-              <div className="ml-5 w-[7rem] text-[0.9rem]">
+              <div className="bg-zinc-400 w-0.5 h-[5.7rem] info"></div>
+              <div className="ml-5 w-[7rem] text-[0.9rem] info">
                 I'm a Full stack Developer, and I work with Next.js.
               </div>
             </div>
@@ -244,7 +299,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="right w-[50vw] relative h-full pt-[5rem]">
+          <div className="right about-main w-[50vw] relative h-full pt-[5rem]">
             <div className="w-[80rem] bg-[url('/pink_back.png')] h-[60rem] absolute right-[-25rem] bottom-[-20rem]">
             </div>
             <div className="w-[80rem] bg-[url('/purple_back.png')] h-[60rem] absolute right-[-20rem] bottom-[0rem]">
@@ -253,11 +308,11 @@ export default function Home() {
             </div>
 
 
-            <h1 className="text-[9rem] w-[9rem] leading-[8.5rem] text-white ml-[-10rem] absolute z-10">About Me</h1>
-            <h3 className="text-zinc-400 absolute text-[1rem] w-[27rem] mt-[20rem]">
+            <h1 className="about text-[9rem] w-[9rem] leading-[8.5rem] text-white ml-[-10rem] absolute z-10">About Me</h1>
+            <h3 className="about text-zinc-400 absolute text-[1rem] w-[27rem] mt-[20rem]">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. At quia fugiat sunt nesciunt! Numquam pariatur consequuntur corrupti, ipsam eaque dolorum veniam aspernatur quia nemo ex, quae enim deleniti sint? Consequatur, illo maiores magnam dolor iure ea? Nemo voluptatum quam modi vero tempore deleniti architecto voluptas.
             </h3>
-            <button className="w-[10rem] h-[3rem] bg-[#D018B8] mt-[32rem] rounded-full text-white font-semibold">
+            <button className="about w-[10rem] h-[3rem] bg-[#D018B8] mt-[32rem] rounded-full text-white font-semibold">
               Contact Me
             </button>
             
