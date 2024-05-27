@@ -21,14 +21,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
 
-  // useEffect( () => {
-  //   (
-  //     async () => {
-  //       const LocomotiveScroll = (await import('locomotive-scroll' as any)).default;
-  //       const locomotiveScroll = new LocomotiveScroll();
-  //     }
-  //   )()
-  // }, [])
+  useEffect( () => {
+    (
+      async () => {
+        const LocomotiveScroll = (await import('locomotive-scroll' as any)).default;
+        const scroll = new LocomotiveScroll({
+          el: document.querySelector('[data-scroll-container]'),
+          smooth: true,
+        });
+        return () => scroll.destroy();
+      }
+    )()
+
+  }, [])
 
   useGSAP(() => {
   let cursor = document.addEventListener("mousemove", (dets) => {
@@ -232,7 +237,7 @@ export default function Home() {
 
 
   return (
-    <>
+    <div data-scroll-container>
       <main className={` ${gilroy.className} w-screen h-screen pt-3 bg-black mybg bg-cover relative`}>
       <div className="cursor-follower w-[1.5rem] h-[1.5rem] rounded-full bg-white fixed z-[100]"></div>
         {/* <img src="/right color bg.png" alt="" className="absolute right-0 top-0 h-[100vh] w-[40%] rotate-180 transform -scale-y-100" /> */}
@@ -397,6 +402,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-    </>
+    </div>
   );
 }
