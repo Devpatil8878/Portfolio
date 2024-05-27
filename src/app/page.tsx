@@ -237,11 +237,10 @@ export default function Home() {
 
 
   return (
-    <div data-scroll-container>
-      <main className={` ${gilroy.className} w-screen h-screen pt-3 bg-black mybg bg-cover relative`}>
+    <div data-scroll-container className="max-w-[100vw] overflow-x-clip">
+      <main className={` ${gilroy.className} max-w-screen h-screen pt-3 bg-black mybg bg-cover relative`}>
       <div className="cursor-follower w-[1.5rem] h-[1.5rem] rounded-full bg-white fixed z-[100]"></div>
-        {/* <img src="/right color bg.png" alt="" className="absolute right-0 top-0 h-[100vh] w-[40%] rotate-180 transform -scale-y-100" /> */}
-        <nav className="rounded-[2.5rem] nav shining-border-element relative flex items-center  border-b-2 border-r-[2px] border-b-purple-900 border-r-blue-800 bg-zinc-950 w-[80%] h-[8%] m-auto">
+         <nav className="rounded-[2.5rem] nav shining-border-element relative flex items-center  border-b-2 border-r-[2px] border-b-purple-900 border-r-blue-800 bg-zinc-950 w-[80%] h-[8%] m-auto">
           <h1 className="text-[1.5rem] dev text-white pl-[3rem]">Dev</h1>
 
           <div className="flex text-white gap-10 ml-[8rem]">
@@ -296,7 +295,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className=" bg-black w-screen flex h-screen pl-[6rem]">
+        <div className=" bg-black w-screen overflow-hidden flex h-screen pl-[6rem]">
           <div className="left w-[50vw] relative h-screen flex">
             <img src="/purple_back.png" className="w-[50rem] h-[50rem] absolute left-[-23rem] bottom-[-15rem] z-[0]" />
             <div className="pic w-[35rem] relative h-[35rem] rounded-full z-[2] bg-[url('/about_me_pic.png')] bg-cover m-auto">
@@ -304,7 +303,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="right about-main w-[50vw] relative h-full pt-[5rem]">
+          <div className="right  about-main w-[50vw] relative h-full pt-[5rem]">
             <div className="w-[80rem] bg-[url('/pink_back.png')] h-[60rem] absolute right-[-25rem] bottom-[-20rem]">
             </div>
             <div className="w-[80rem] bg-[url('/purple_back.png')] h-[60rem] absolute right-[-20rem] bottom-[0rem]">
