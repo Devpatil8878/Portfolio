@@ -300,7 +300,6 @@ export default function Home() {
 
     window.onscroll = scrollFunction;
 
-    // Clean up the event listener on component unmount
     return () => {
       window.onscroll = null;
     };
