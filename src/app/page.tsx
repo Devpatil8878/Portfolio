@@ -3,9 +3,10 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import localfont from "next/font/local";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 const gilroy = localfont({
   src: [
@@ -17,25 +18,20 @@ const gilroy = localfont({
   variable: '--font-gilroy'
 })
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export default function Home() {
+
+  let scroll: any;
 
   useEffect( () => {
     (
       async () => {
         const LocomotiveScroll = (await import('locomotive-scroll' as any)).default;
-        const scroll = new LocomotiveScroll({
+        scroll = new LocomotiveScroll({
           el: document.querySelector('[data-scroll-container]'),
           smooth: true,
         });
-
-        // const handleScrollToProjects = () => {
-        //   const targetElement = document.getElementById(targetId);
-        //   if (targetElement) {
-        //     scroll.scrollTo(targetElement);
-        //   }
-        // }
 
         return () => scroll.destroy();
       }
@@ -43,13 +39,52 @@ export default function Home() {
 
   }, [])
 
+
+  const handleScrollToProjects = () => {
+    const targetElement = document.getElementById('Projects');
+    if (targetElement) {
+      gsap.to(window, { duration: 1.5, scrollTo: targetElement });
+    }
+  }
+  const handleScrollToAbout = () => {
+    const targetElement = document.getElementById('About');
+    if (targetElement) {
+      gsap.to(window, { duration: 1, scrollTo: targetElement });
+    }
+  }
+  const handleScrollToTechstack = () => {
+    const targetElement = document.getElementById('Techstack');
+    if (targetElement) {
+      gsap.to(window, { duration: 1.5, scrollTo: targetElement });
+    }
+  }
+  const handleScrollToHireMe = () => {
+    const targetElement = document.getElementById('HireMe');
+    if (targetElement) {
+      gsap.to(window, { duration: 2, scrollTo: targetElement });
+    }
+  }
+  const handleScrollToHome = () => {
+    const targetElement = document.getElementById('Home');
+    if (targetElement) {
+      gsap.to(window, { duration: 1, scrollTo: targetElement });
+    }
+  }
+  const handleScrollToContact = () => {
+    const targetElement = document.getElementById('Contact');
+    if (targetElement) {
+      gsap.to(window, { duration: 2, scrollTo: targetElement });
+    }
+  }
+
+          
  
 
   useGSAP(() => {
   let cursor = document.addEventListener("mousemove", (dets) => {
       gsap.to(".cursor-follower", {
-        x: dets.x,
-        y: dets.y,
+        x: dets.x - 15,
+        y: dets.y - 30,
         ease: "back.out(2.5)",
       })
     })
@@ -64,7 +99,9 @@ export default function Home() {
       ease: "back.out(1.7)",
       scrollTrigger: {
         trigger: `.tech-stack`,
-        start: "top 30%",
+        start: "top 0%",
+        scrub: true,
+        pin: true
       },
       opacity: 0,
       duration:1.2,
@@ -77,7 +114,8 @@ export default function Home() {
       ease: "back.out(1.7)",
       scrollTrigger: {
         trigger: `.tech-stack`,
-        start: "top 30%",
+        start: "top 0%",
+        scrub: true,
       },
       opacity: 0,
       duration:1.2,
@@ -90,7 +128,8 @@ export default function Home() {
       ease: "back.out(1.7)",
       scrollTrigger: {
         trigger: `.tech-stack`,
-        start: "top 30%",
+        start: "top 0%",
+        scrub: true,
       },
       opacity: 0,
       duration:1.3,
@@ -99,11 +138,12 @@ export default function Home() {
     })
     gsap.from(".docker", {
       x: 400,
-      y: 110,
+      y: 70,
       ease: "back.out(1.7)",
       scrollTrigger: {
         trigger: `.tech-stack`,
-        start: "top 30%",
+        start: "top 0%",
+        scrub: true,
       },
       opacity: 0,
       duration:1.3,
@@ -111,12 +151,13 @@ export default function Home() {
       z: 10,
     })
     gsap.from(".react", {
-      x: -400,
+      x: -300,
       y: 110,
       ease: "back.out(1.7)",
       scrollTrigger: {
         trigger: `.tech-stack`,
-        start: "top 30%",
+        start: "top 0%",
+        scrub: true,
       },
       opacity: 0,
       duration:1.2,
@@ -124,12 +165,13 @@ export default function Home() {
       z: 10,
     })
     gsap.from(".github", {
-      x: -400,
+      x: -300,
       y: -110,
       ease: "back.out(1.7)",
       scrollTrigger: {
         trigger: `.tech-stack`,
-        start: "top 30%",
+        start: "top 0%",
+        scrub: true,
       },
       opacity: 0,
       duration:1.3,
@@ -137,12 +179,13 @@ export default function Home() {
       z: 10,
     })
     gsap.from(".nodejs", {
-      x: -700,
+      x: -500,
       y: -110,
       ease: "back.out(1.7)",
       scrollTrigger: {
         trigger: `.tech-stack`,
-        start: "top 30%",
+        start: "top 0%",
+        scrub: true,
       },
       opacity: 0,
       duration:1.4,
@@ -150,12 +193,13 @@ export default function Home() {
       z: 10,
     })
     gsap.from(".tailwind", {
-      x: -700,
+      x: -600,
       y: 60,
       ease: "back.out(1.7)",
       scrollTrigger: {
         trigger: `.tech-stack`,
-        start: "top 30%",
+        start: "top 0%",
+        scrub: true,
       },
       opacity: 0,
       duration:1.4,
@@ -163,12 +207,13 @@ export default function Home() {
       z: 10,
     })
     gsap.from(".threejs", {
-      x: -1000,
+      x: -700,
       y: 250,
       ease: "back.out(1.7)",
       scrollTrigger: {
         trigger: `.tech-stack`,
-        start: "top 30%",
+        start: "top 0%",
+        scrub: true,
       },
       opacity: 0,
       duration:1.4,
@@ -176,12 +221,13 @@ export default function Home() {
       z: 10,
     })
     gsap.from(".mysql", {
-      x: -1200,
-      y: 250,
+      x: -800,
+      y: 200,
       ease: "back.out(1.7)",
       scrollTrigger: {
         trigger: `.tech-stack`,
-        start: "top 30%",
+        start: "top 0%",
+        scrub: true,
       },
       opacity: 0,
       duration:1.4,
@@ -194,7 +240,7 @@ export default function Home() {
       duration:1,
       delay: 0.5,
       yoyo: true,
-      repeat: 100
+      repeat: Infinity
     })
 
 
@@ -240,6 +286,19 @@ export default function Home() {
   })
 
 
+  const [isVisible, setIsVisible] = useState(false);
+  let mybutton = document.querySelector<HTMLDivElement>("#upArrow");
+  window.onscroll = function() {scrollFunction()};
+  function scrollFunction() {
+      if (window.scrollY > 200) {
+          setIsVisible(true)
+      } else {
+        setIsVisible(false)
+      }
+  }
+
+
+
 
 
 
@@ -248,22 +307,25 @@ export default function Home() {
 
   return (
     <div data-scroll-container className="max-w-[100vw] overflow-x-clip">
-      <main className={` ${gilroy.className} max-w-screen h-screen pt-3 bg-black mybg bg-cover relative`}>
-      <div className="cursor-follower mix-blend-difference w-[1.5rem] h-[1.5rem] rounded-full bg-white fixed z-[100]"></div>
+      <main id="Home" className={` ${gilroy.className} max-w-screen h-screen pt-3 bg-black mybg bg-cover relative`}>
+      <div className="cursor-follower pointer-events-none mix-blend-difference w-[1.5rem] h-[1.5rem] rounded-full bg-white fixed z-[100]"></div>
+      <div id="upArrow" onClick={handleScrollToHome} className={` ${isVisible ? "block" : 'hidden'} w-[2.5rem] cursor-pointer h-[2.5rem] fixed bottom-[4rem] right-[4rem] bg-black z-[90] rounded-full`}>
+        <img src="/up-arrow.png" className="scale-50 opacity-80"/>
+      </div>
          <nav className="rounded-[2.5rem] nav shining-border-element relative flex items-center  border-b-2 border-r-[2px] border-b-purple-900 border-r-blue-800 bg-zinc-950 w-[80%] h-[8%] m-auto">
           <h1 className="text-[1.5rem] dev text-white pl-[3rem]">Dev</h1>
 
           <div className="flex text-white gap-10 ml-[8rem]">
-            <h2 className="cursor-pointer top-to-down-anim">Home</h2>
-            <h2 className="cursor-pointer top-to-down-anim">Projects</h2>
-            <h2 className="cursor-pointer top-to-down-anim">About</h2>
-            <h2 className="cursor-pointer top-to-down-anim">Contact</h2>
+            <h2 onClick={handleScrollToHome} className="cursor-pointer top-to-down-anim">Home</h2>
+            <h2 onClick={handleScrollToProjects} className="cursor-pointer top-to-down-anim">Projects</h2>
+            <h2 onClick={handleScrollToAbout} className="cursor-pointer top-to-down-anim">About</h2>
+            <h2 onClick={handleScrollToContact} className="cursor-pointer top-to-down-anim">Contact</h2>
           </div>
 
           <div className=" ml-[26rem] top-to-down-anim switch text-white">switch</div>
 
-          <button className="contact-me ml-[2.1rem] top-to-down-anim text-white bg-purple-900 rounded-[3rem] py-[.7rem] px-[1.5rem]">
-            Contact Me
+          <button onClick={handleScrollToHireMe} className="contact-me ml-[2.1rem] top-to-down-anim text-white bg-purple-900 rounded-[3rem] py-[.7rem] px-[1.5rem]">
+            Hire me
           </button>
         </nav>
 
@@ -305,7 +367,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className=" bg-black w-screen overflow-hidden flex h-screen pl-[6rem]">
+        <div id="About" className=" bg-black w-screen overflow-hidden flex h-screen pl-[6rem]">
           <div className="left w-[50vw] relative h-screen flex">
             <img src="/purple_back.png" className="w-[50rem] h-[50rem] absolute left-[-23rem] bottom-[-15rem] z-[0]" />
             <div className="pic w-[35rem] relative h-[35rem] rounded-full z-[2] bg-[url('/about_me_pic.png')] bg-cover m-auto">
@@ -334,7 +396,7 @@ export default function Home() {
         </div>
 
 
-        <div data-scroll className="tech-stack w-screen h-screen pl-[10rem] pt-[4rem] bg-black">
+        <div id="TechStack" data-scroll className="tech-stack w-screen h-screen pl-[10rem] pt-[4rem] bg-black">
           <h1 className="text-[5rem] mb-10 text-zinc-300">Tech stack </h1>
 
           <div className="card-container flex gap-8 text-white lg:pl-[1rem] mr-[10vw] m-auto">
@@ -403,7 +465,7 @@ export default function Home() {
         </div>
 
 
-        <div className="w-screen min-h-screen bg-black text-white">
+        <div id="Projects" className="w-screen min-h-screen bg-black text-white">
           <h1 className="text-9xl text-end mr-[15rem] pt-10">Projects</h1>
 
           <div className="flex w-screen">
