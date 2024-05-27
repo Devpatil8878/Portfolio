@@ -29,18 +29,28 @@ export default function Home() {
           el: document.querySelector('[data-scroll-container]'),
           smooth: true,
         });
+
+        // const handleScrollToProjects = () => {
+        //   const targetElement = document.getElementById(targetId);
+        //   if (targetElement) {
+        //     scroll.scrollTo(targetElement);
+        //   }
+        // }
+
         return () => scroll.destroy();
       }
     )()
 
   }, [])
 
+ 
+
   useGSAP(() => {
   let cursor = document.addEventListener("mousemove", (dets) => {
       gsap.to(".cursor-follower", {
-        x: dets.x - 15,
-        y: dets.y - 30,
-        ease: "back.out(2)",
+        x: dets.x,
+        y: dets.y,
+        ease: "back.out(2.5)",
       })
     })
   })
@@ -239,7 +249,7 @@ export default function Home() {
   return (
     <div data-scroll-container className="max-w-[100vw] overflow-x-clip">
       <main className={` ${gilroy.className} max-w-screen h-screen pt-3 bg-black mybg bg-cover relative`}>
-      <div className="cursor-follower w-[1.5rem] h-[1.5rem] rounded-full bg-white fixed z-[100]"></div>
+      <div className="cursor-follower mix-blend-difference w-[1.5rem] h-[1.5rem] rounded-full bg-white fixed z-[100]"></div>
          <nav className="rounded-[2.5rem] nav shining-border-element relative flex items-center  border-b-2 border-r-[2px] border-b-purple-900 border-r-blue-800 bg-zinc-950 w-[80%] h-[8%] m-auto">
           <h1 className="text-[1.5rem] dev text-white pl-[3rem]">Dev</h1>
 
@@ -324,7 +334,7 @@ export default function Home() {
         </div>
 
 
-        <div className="tech-stack w-screen h-screen pl-[10rem] pt-[4rem] bg-black">
+        <div data-scroll className="tech-stack w-screen h-screen pl-[10rem] pt-[4rem] bg-black">
           <h1 className="text-[5rem] mb-10 text-zinc-300">Tech stack </h1>
 
           <div className="card-container flex gap-8 text-white lg:pl-[1rem] mr-[10vw] m-auto">
