@@ -81,7 +81,7 @@ export default function Home() {
  
 
   useGSAP(() => {
-  let cursor = document.addEventListener("mousemove", (dets) => {
+    let cursor = document.addEventListener("mousemove", (dets) => {
       gsap.to(".cursor-follower", {
         x: dets.x - 15,
         y: dets.y - 30,
@@ -287,15 +287,24 @@ export default function Home() {
 
 
   const [isVisible, setIsVisible] = useState(false);
-  let mybutton = document.querySelector<HTMLDivElement>("#upArrow");
-  window.onscroll = function() {scrollFunction()};
-  function scrollFunction() {
+  useEffect(() => {
+    const mybutton = document.querySelector<HTMLDivElement>("#upArrow");
+
+    const scrollFunction = () => {
       if (window.scrollY > 200) {
-          setIsVisible(true)
+        setIsVisible(true);
       } else {
-        setIsVisible(false)
+        setIsVisible(false);
       }
-  }
+    };
+
+    window.onscroll = scrollFunction;
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.onscroll = null;
+    };
+  }, []);
 
 
 
