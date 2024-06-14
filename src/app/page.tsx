@@ -31,6 +31,7 @@ export default function Home() {
         scroll = new LocomotiveScroll({
           el: document.querySelector('[data-scroll-container]'),
           smooth: true,
+          multiplier: 0.1
         });
 
         return () => scroll.destroy();
@@ -43,7 +44,7 @@ export default function Home() {
   const handleScrollToProjects = () => {
     const targetElement = document.getElementById('Projects');
     if (targetElement) {
-      gsap.to(window, { duration: 1.5, scrollTo: targetElement });
+      gsap.to(window, { duration: 0.1, scrollTo: targetElement });
     }
   }
   const handleScrollToAbout = () => {
@@ -67,7 +68,7 @@ export default function Home() {
   const handleScrollToHome = () => {
     const targetElement = document.getElementById('Home');
     if (targetElement) {
-      gsap.to(window, { duration: 1, scrollTo: targetElement });
+      gsap.to(window, { duration: 0.1, scrollTo: targetElement });
     }
   }
   const handleScrollToContact = () => {
@@ -79,15 +80,44 @@ export default function Home() {
 
           
  
+  let xscale = 1;
+  let yscale = 1;
+
+  let xprev = 0;
+  let yprev = 0;
+
+  let timeout;
 
   useGSAP(() => {
-    let cursor = document.addEventListener("mousemove", (dets) => {
-      gsap.to(".cursor-follower", {
-        x: dets.x - 15,
-        y: dets.y - 30,
-        ease: "back.out(2.5)",
+
+
+      // document.addEventListener("mousemove", function(dets){
+      //   clearTimeout(timeout);
+
+      //   xscale = gsap.utils.clamp(0.8, 1.2, dets.clientX - xprev)
+      //   yscale = gsap.utils.clamp(0.8, 1.2, dets.clientY - yprev)
+
+      //   xprev = dets.clientX;
+      //   yprev = dets.clientY;
+
+      //   console.log(xscale, yscale);
+
+      //   timeout = setTimeout(() => {
+      //     gsap.to(".cursor-follower", {
+      //       scale: 1,
+      //     })
+      //   }, 100);
+      // })
+    
+
+      let cursor = document.addEventListener("mousemove", (dets) => {
+        gsap.to(".cursor-follower", {
+          x: dets.x - 15,
+          y: dets.y - 30,
+          ease: "back.out(2.5)",
+        })
       })
-    })
+
   })
   
 
@@ -100,6 +130,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: `.tech-stack`,
         start: "top 0%",
+        end: "bottom -190%",
         scrub: true,
         pin: true
       },
@@ -115,6 +146,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: `.tech-stack`,
         start: "top 0%",
+        end: "bottom -150%",
         scrub: true,
       },
       opacity: 0,
@@ -129,6 +161,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: `.tech-stack`,
         start: "top 0%",
+        end: "bottom -150%",
         scrub: true,
       },
       opacity: 0,
@@ -143,6 +176,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: `.tech-stack`,
         start: "top 0%",
+        end: "bottom -150%",
         scrub: true,
       },
       opacity: 0,
@@ -157,6 +191,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: `.tech-stack`,
         start: "top 0%",
+        end: "bottom -150%",
         scrub: true,
       },
       opacity: 0,
@@ -171,6 +206,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: `.tech-stack`,
         start: "top 0%",
+        end: "bottom -150%",
         scrub: true,
       },
       opacity: 0,
@@ -185,6 +221,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: `.tech-stack`,
         start: "top 0%",
+        end: "bottom -150%",
         scrub: true,
       },
       opacity: 0,
@@ -199,6 +236,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: `.tech-stack`,
         start: "top 0%",
+        end: "bottom -150%",
         scrub: true,
       },
       opacity: 0,
@@ -213,6 +251,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: `.tech-stack`,
         start: "top 0%",
+        end: "bottom -150%",
         scrub: true,
       },
       opacity: 0,
@@ -227,6 +266,7 @@ export default function Home() {
       scrollTrigger: {
         trigger: `.tech-stack`,
         start: "top 0%",
+        end: "bottom -150%",
         scrub: true,
       },
       opacity: 0,
@@ -305,6 +345,42 @@ export default function Home() {
     };
   }, []);
 
+  let diffrot = 0;
+  let rotate = 0;
+
+  useEffect(() => {
+    document.querySelectorAll(".elem").forEach(function(elem) {
+
+      elem.addEventListener("mouseleave", function() {
+        gsap.to(elem.querySelector("img"), {
+          display: 'none',
+          duration: 0.3,
+          opacity: 0,
+        });
+      });
+
+      elem.addEventListener("mousemove", function(dets) {
+        let diff = dets.clientY - elem.getBoundingClientRect().top;
+        diffrot = dets.clientX - rotate
+        rotate = dets.clientX
+      
+
+        gsap.to(elem.querySelector("img"), {
+          display: "block",
+          duration: 0.3, 
+          opacity: 1,
+          top: diff,
+          left: dets.clientX,
+          rotate: gsap.utils.clamp(-20, 20, diffrot*.5)
+        });
+      });
+    });
+  
+  }, []);
+  
+
+
+
 
 
 
@@ -337,23 +413,22 @@ export default function Home() {
           </button>
         </nav>
 
-        <div className="flex">
-          <div className="left w-[40%] h-[90vh] pl-[12rem] pt-[10rem] ">
-            <div className="suptext text-zinc-400 text-3xl info">It is me guys</div>
-
-            <div className="title mt-2 text-white text-[5rem] leading-[6rem] font-medium info">
+        <div className="flex-col flex lg:flex-row items-center lg:items-start">
+          <div className="left lg:w-[40%] w-full text-center lg:text-start h-[90vh] pt-[20%] lg:pl-[12vw] lg:pt-[3vw] flex flex-col justify-center">
+            <div className="suptext text-zinc-400 text-[5vw] lg:text-[1.875vw] info">It is me guys</div>
+            <div className="title mt-2 text-white text-[15vw] lg:text-[5vw] lg:leading-[6vw] font-medium info">
               Full Stack Developer
             </div>
-
-            <div className="subtext flex mt-2 ml-2 text-zinc-400">
-              <div className="bg-zinc-400 w-0.5 h-[5.7rem] info"></div>
-              <div className="ml-5 w-[7rem] text-[0.9rem] info">
+            <div className="subtext w-full flex justify-center lg:justify-start mt-2 ml-2 text-zinc-400">
+              <div className="bg-zinc-400 min-w-[0.125vw] h-[5.7vw] hidden lg:block info"></div>
+              <div className="lg:ml-5 w-[30vw] lg:w-[7vw] text-[4vw] lg:text-[0.9vw] info self-center">
                 I am a Full stack Developer, and I work with Next.js.
               </div>
             </div>
           </div>
 
-          <div className="right w-[60%] relative h-[90vh] ">
+
+          <div className="right hidden lg:block w-[60%] relative h-[90vh] ">
             <div className="absolute bottom-0 right-[12rem]">
               <img src="/bg_bubble.png" alt="" className="w-[40rem]" />
               <img
@@ -372,34 +447,6 @@ export default function Home() {
                 className="w-[11rem] absolute top-[6.4rem] left-[-4.5rem] rotate-[-16deg] z-[0]"
               />
             </div>
-          </div>
-        </div>
-
-        <div id="About" className=" bg-black w-screen overflow-hidden flex h-screen pl-[6rem]">
-          <div className="left w-[50vw] relative h-screen flex">
-            <img src="/purple_back.png" className="w-[50rem] h-[50rem] absolute left-[-23rem] bottom-[-15rem] z-[0]" />
-            <div className="pic w-[35rem] relative h-[35rem] rounded-full z-[2] bg-[url('/about_me_pic.png')] bg-cover m-auto">
-              <img src="/bigger_ball.png" className="w-[8rem] h-[8rem] absolute left-[-1rem] z-[1] bottom-[1.5rem]" />
-            </div>
-          </div>
-
-          <div className="right  about-main w-[50vw] relative h-full pt-[5rem]">
-            <div className="w-[80rem] bg-[url('/pink_back.png')] h-[60rem] absolute right-[-25rem] bottom-[-20rem]">
-            </div>
-            <div className="w-[80rem] bg-[url('/purple_back.png')] h-[60rem] absolute right-[-20rem] bottom-[0rem]">
-            </div>
-            <div className="w-[20rem] h-[4.8rem] bg-[url('/dots_back.png')]  absolute right-[0rem] bottom-[5rem]">
-            </div>
-
-
-            <h1 className="about text-[9rem] w-[9rem] leading-[8.5rem] text-white ml-[-10rem] absolute z-10">About Me</h1>
-            <h3 className="about text-zinc-400 absolute text-[1rem] w-[27rem] mt-[20rem]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. At quia fugiat sunt nesciunt! Numquam pariatur consequuntur corrupti, ipsam eaque dolorum veniam aspernatur quia nemo ex, quae enim deleniti sint? Consequatur, illo maiores magnam dolor iure ea? Nemo voluptatum quam modi vero tempore deleniti architecto voluptas.
-            </h3>
-            <button className="about w-[10rem] h-[3rem] bg-[#D018B8] mt-[32rem] rounded-full text-white font-semibold">
-              Contact Me
-            </button>
-            
           </div>
         </div>
 
@@ -474,9 +521,47 @@ export default function Home() {
 
 
         <div id="Projects" className="w-screen min-h-screen bg-black text-white">
-          <h1 className="text-9xl text-end mr-[15rem] pt-10">Projects</h1>
+          <h1 className="text-9xl text-end mr-[15rem] pt-10 mb-[10vh]">Projects</h1>
 
-          <div className="flex w-screen">
+          <div className="w-screen mt-[3vh] elem">
+            <img src="/images/photo-1717705422478-0b42e89e06b7.avif"  />
+            <h1>saaqi</h1>
+            <h5>2024</h5>
+          </div>
+          <div className="w-screen mt-[3vh] elem elemlast">
+          <img src="/images/photo-1718215005618-ca55ae919d15.avif"  />
+            <h1>saaqi</h1>
+            <h5>2024</h5>
+          </div>
+        </div>
+
+
+
+
+        <div id="About" className=" bg-black w-screen overflow-hidden flex h-screen pl-[6rem]">
+          <div className="left w-[50vw] relative h-screen flex">
+            <img src="/purple_back.png" className="w-[50rem] h-[50rem] absolute left-[-23rem] bottom-[-15rem] z-[0]" />
+            <div className="pic w-[35rem] relative h-[35rem] rounded-full z-[2] bg-[url('/about_me_pic.png')] bg-cover m-auto">
+              <img src="/bigger_ball.png" className="w-[8rem] h-[8rem] absolute left-[-1rem] z-[1] bottom-[1.5rem]" />
+            </div>
+          </div>
+
+          <div className="right  about-main w-[50vw] relative h-full pt-[5rem]">
+            <div className="w-[80rem] bg-[url('/pink_back.png')] h-[60rem] absolute right-[-25rem] bottom-[-20rem]">
+            </div>
+            <div className="w-[80rem] bg-[url('/purple_back.png')] h-[60rem] absolute right-[-20rem] bottom-[0rem]">
+            </div>
+            <div className="w-[20rem] h-[4.8rem] bg-[url('/dots_back.png')]  absolute right-[0rem] bottom-[5rem]">
+            </div>
+
+
+            <h1 className="about text-[9rem] w-[9rem] leading-[8.5rem] text-white ml-[-10rem] absolute z-10">About Me</h1>
+            <h3 className="about text-zinc-400 absolute text-[1rem] w-[27rem] mt-[20rem]">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. At quia fugiat sunt nesciunt! Numquam pariatur consequuntur corrupti, ipsam eaque dolorum veniam aspernatur quia nemo ex, quae enim deleniti sint? Consequatur, illo maiores magnam dolor iure ea? Nemo voluptatum quam modi vero tempore deleniti architecto voluptas.
+            </h3>
+            <button className="about w-[10rem] h-[3rem] bg-[#D018B8] mt-[32rem] rounded-full text-white font-semibold">
+              Contact Me
+            </button>
             
           </div>
         </div>

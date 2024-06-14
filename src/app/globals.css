@@ -65,3 +65,33 @@ body, html {
     left: 0%;
   }
 }
+
+.elem{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  border-top: 1px solid #888;
+  padding: 1.5vw 3vw;
+  position: relative;
+
+}
+
+.elemlast{
+  border-bottom: 1px solid #888;
+}
+
+.elem h1{
+  text-transform: uppercase;
+  font-size: 6.6vw;
+}
+
+.elem img{
+  display: none;
+  position: absolute;
+  height: 130%;
+  border-radius: 5px;
+  object-fit: cover;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
